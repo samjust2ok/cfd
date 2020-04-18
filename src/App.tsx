@@ -18,6 +18,7 @@ import theme from './constants/theme';
 import StyledApp from './styled/StyledApp';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import Landing from './pages/Landing';
 import Home from './pages/Home';
 
 
@@ -37,7 +38,8 @@ const App = () => (
       <Router>
         <>
           <StyledApp>
-            <Route exact path={ROUTES.HOME} component={Home} />
+            <Route exact path={ROUTES.HOME} component={Landing} />
+            <Route exact path='/m' component={Home} />
             <Route path={ROUTES.DASHBOARD} component={Dashboard} />
             <Route path={ROUTES.TIPS} component={Tips} />
             <Route path={ROUTES.REPORT} component={Report} />

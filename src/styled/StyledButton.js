@@ -1,25 +1,22 @@
 import styled from 'styled-components';
 
+const buttonHeight = 40;
 
 const StyledButton = styled.button`
-    border-radius: 3px;
+    background-image: ${props=>`linear-gradient(45deg, ${props.theme.lnGrad1} 0%, ${props.theme.lnGrad2} 100%);`};
+    display:flex;
+    align-items:center;
+    padding: 0 20px;
+    height:${buttonHeight+ 'px'};
     border:none;
-    padding:10px 20px;
-    max-height:40px;
-    color:${props=>props.type === 'primary'?'white':'#1a73e8'};
-    background-color:${props=>props.type === 'primary' ? '#1a73e8' : 'white'};
-    font-weight:600;
-    margin-left:${props=>props.type === 'primary'? '':'-20px'};
-    transition:.2s;
-    width:auto;
-
-    span{
-        margin:${props=>props.iconPos === 'left' ? '0px 5px 0px 0px':'0px 0px 0px 5px'};
-    }
+    font-size: 16px;
+    border-radius: ${buttonHeight/2 + 'px'};
+    transition: all .2 ease-in;
+    margin:100px;
+    color:white;
 
     :hover{
-        background-color:${props=>props.type === 'primary'?'':'rgb(246, 250, 254)'};
-        
+        background: ${props=>`linear-gradient(45deg, ${props.theme.lnGrad3} 0%, ${props.theme.lnGrad2} 100%);`};
     }
 `;
 

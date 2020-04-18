@@ -9,4 +9,9 @@ export default {
     dscBGFull: 'rgb(241, 248, 255)',
     dscLightBlue: 'rgb(84, 163, 255)',
     dscText: 'rgba(1,27,51,0.9)',
+
+
+    lnGrad1: '#0356ac',
+    lnGrad2: '#00e0ff',
+    lnGrad3: '#044e9c',
 }

@@ -3,21 +3,10 @@ import StyledButton from "../styled/StyledButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const Button = ({text,icon, type = 'primary', onClick, iconPos = 'right'})=>{
+const Button = ({onClick,children})=>{
     return (
-        <StyledButton iconPos = {iconPos} onClick = {onClick} type = {type}>
-            {
-                iconPos === 'left' && icon &&
-                <span>
-                    <FontAwesomeIcon icon = {icon}/>
-                </span>
-            }
-            {text}
-            {iconPos !== 'left' && icon &&
-                <span>
-                <FontAwesomeIcon icon = {icon}/>
-                </span>
-            }
+        <StyledButton onClick = {onClick}>
+            {children}
         </StyledButton>
     );
 }
