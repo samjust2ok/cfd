@@ -390,24 +390,36 @@ const Landing  = ()=>{
                         <div className="Chart">
                             <div className="Title">
                                 <h1>Cases per day</h1>
-                                <p>{`${moment(dailyNewCases[0].date).format('MMMM, YYYY')} - ${moment().format('MMMM, YYYY')}`}</p>
-                                <p>Daily Average <span className = 'Tag'>(over duration)</span>
-                                    {
-                                        Number(_.sumBy(dailyNewCases,(elem)=>elem.data)/dailyNewCases.length).toFixed(2)
-                                    }
-                                </p>
+                                {
+                                    dailyNewCases[0] && 
+                                    <p>{`${moment(dailyNewCases[0].date).format('MMMM, YYYY')} - ${moment().format('MMMM, YYYY')}`}</p>
+                                }
+                                {
+                                    dailyNewCases[0] &&
+                                    <p>Daily Average <span className = 'Tag'>(over duration)</span>
+                                        {
+                                            Number(_.sumBy(dailyNewCases,(elem)=>elem.data)/dailyNewCases.length).toFixed(2)
+                                        }
+                                    </p>
+                                }
                             </div>
                             <CustomAreaChart cases = {true} data = {dailyNewCases}/>
                         </div>
                         <div className="Chart">
                             <div className="Title">
                                 <h1>Cummulative Death</h1>
-                                <p>{`${moment(cumulativeDeath[0].date).format('MMMM, YYYY')} - ${moment().format('MMMM, YYYY')}`}</p>
-                                <p>Daily Average <span className = 'Tag'>(over duration)</span>
-                                    {
-                                        Number(_.sumBy(cumulativeDeath,(elem)=>elem.data)/cumulativeDeath.length).toFixed(2)
-                                    }
-                                </p>
+                                {
+                                    cumulativeDeath[0] &&
+                                    <p>{`${moment(cumulativeDeath[0].date).format('MMMM, YYYY')} - ${moment().format('MMMM, YYYY')}`}</p>
+                                }
+                                {
+                                    cumulativeDeath[0] &&
+                                    <p>Daily Average <span className = 'Tag'>(over duration)</span>
+                                        {
+                                            Number(_.sumBy(cumulativeDeath,(elem)=>elem.data)/cumulativeDeath.length).toFixed(2)
+                                        }
+                                    </p>
+                                }
                             </div>
                             <CustomAreaChart cases = {false} data = {cumulativeDeath}/>
                         </div>
