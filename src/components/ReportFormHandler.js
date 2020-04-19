@@ -30,7 +30,7 @@ let Component = ({index,props,next,previous})=>{
             <>
             {
                 index === 0?
-                <General index = {index} next = {next} previous = {previous} style = {props}/>:
+                <UserInfoForm index = {index} next = {next} previous = {previous} style = {props}/>:
                 index === 1 ?
                 <Symptoms index = {index} next = {next} previous = {previous} style = {props}/>:
                 index === 2 ?
