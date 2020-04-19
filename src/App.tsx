@@ -6,7 +6,6 @@ import { AuthProvider } from './auth/Auth'
 import './App.css';
 import { PersistGate } from 'redux-persist/integration/react';
 import Header from './pages/Navigation';
-import Dashboard from './pages/Dashboard';
 import Tips from './pages/Tips';
 import Report from './pages/Report';
 import Login from './pages/Login';
@@ -40,7 +39,6 @@ const App = () => (
           <StyledApp>
             <Route exact path={ROUTES.HOME} component={Landing} />
             <Route exact path='/m' component={Home} />
-            <Route path={ROUTES.DASHBOARD} component={Dashboard} />
             <Route path={ROUTES.TIPS} component={Tips} />
             <Route path={ROUTES.REPORT} component={Report} />
             <Route path={ROUTES.LOGIN} component={Login} />

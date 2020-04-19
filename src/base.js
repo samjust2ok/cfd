@@ -18,14 +18,14 @@ import 'firebase/database';
 
 
 const firebaseConfig = {
-  apiKey:   "AIzaSyC0VHH7O4lwTqyES-JC_6IdjqH3DvByqdM",
-  authDomain: "cfd-covid.firebaseapp.com",
-  databaseURL: "https://cfd-covid.firebaseio.com",
-  projectId: "cfd-covid",
-  storageBucket: "cfd-covid.appspot.com",
-  // messagingSenderId: "724650717987",
-  // appId: "1:724650717987:web:1e96e61a05f00140a35296",
-  // measurementId: "G-LJRVG3223S"
+    apiKey: "AIzaSyC0VHH7O4lwTqyES-JC_6IdjqH3DvByqdM",
+    authDomain: "cfd-covid.firebaseapp.com",
+    databaseURL: "https://cfd-covid.firebaseio.com",
+    projectId: "cfd-covid",
+    storageBucket: "cfd-covid.appspot.com",
+    messagingSenderId: "868334582219",
+    appId: "1:868334582219:web:0dcc6ffc2b1e8a63b2de4e",
+    measurementId: "G-9CN644PZG5"
 };
 
 

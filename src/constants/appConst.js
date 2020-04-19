@@ -1,17 +1,53 @@
+import {getStateFomart} from '../utils/appUtils';
+
 export const genderOpt = [
     {display: 'Male',value:'male'},
     {display:'Female',value:'female'}
 ]
 
-export const stateOpt = [
-    {display: 'Lagos',value:'lagos'},
-    {display:'Abuja',value:'abuja'},
-    {display:'Ondo',value:'ondo'},
-    {display:'Anambra',value:'anambra'},
-    {display:'Kogi',value:'kogi'},
-    {display: 'Oyo',value:'oyo'},
-    {display:'Kano',value:'kano'}
-]
+export const state = [
+    "Abia",
+    "Adamawa",
+    "Akwa Ibom",
+    "Anambra",
+    "Bauchi",
+    "Bayelsa",
+    "Benue",
+    "Borno",
+    "Cross River",
+    "Delta",
+    "Ebonyi",
+    "Edo",
+    "Ekiti",
+    "Enugu",
+    "FCT - Abuja",
+    "Gombe",
+    "Imo",
+    "Jigawa",
+    "Kaduna",
+    "Kano",
+    "Katsina",
+    "Kebbi",
+    "Kogi",
+    "Kwara",
+    "Lagos",
+    "Nasarawa",
+    "Niger",
+    "Ogun",
+    "Ondo",
+    "Osun",
+    "Oyo",
+    "Plateau",
+    "Rivers",
+    "Sokoto",
+    "Taraba",
+    "Yobe",
+    "Zamfara"
+  ]
+
+export const stateOpt = getStateFomart(state);
+
+
 
 export const ncdcCallCenter = [
     {

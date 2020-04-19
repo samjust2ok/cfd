@@ -36,3 +36,13 @@ export const getDateArrayInFormat = ()=>{
     }
     return parsedDate;
 }
+
+export const getStateFomart = (stateArray)=>{
+    const formartArray = stateArray.map(state=>{
+        return {
+            display: state.charAt(0).toUpperCase() + state.substr(1),
+            value: state.toLowerCase(),
+        }
+    })
+    return formartArray;
+}
