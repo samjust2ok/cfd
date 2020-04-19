@@ -36,7 +36,8 @@ export const getUserById = (userId,onSuccess,onError) => {
   }
 
   export const checkUserExists = (email,onSuccess,onError)=> {
-    firestore.collection('users').where('email','==',email).get().then(function(doc) {
+    firestore.collection('reports').where('personalInformation.email','==',email).get()
+    .then(function(doc) {
         onSuccess(doc.size > 0)
     }).catch(function(error) {
         onError(error)

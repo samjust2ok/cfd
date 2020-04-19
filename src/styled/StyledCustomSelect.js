@@ -15,7 +15,7 @@ const StyledCustomSelect = styled.div`
         .SelectorDisplay{
             width: 100%;
             position:relative;
-            height: 40px;
+            height: 45px;
             border: ${props=>props.error ? '2px solid #d93025':'1px solid #dadce0'};
             border-radius:5px;
             padding: 0 10px;
@@ -44,7 +44,7 @@ const StyledCustomSelect = styled.div`
             }
 
             .PlaceHolder[optionselected = false]{
-                transform: scale(.75) translateY(-37px);
+                transform: scale(.75) translateY(-42px);
                 color:${props=>props.error ? '#d93025':'#5f6368'};
                 background-color:white;
                 padding:0 6px;
@@ -57,7 +57,7 @@ const StyledCustomSelect = styled.div`
         }
 
         .SelectorDisplay[focused = true] .PlaceHolder{
-            transform: scale(.75) translateY(-37px);
+            transform: scale(.75) translateY(-42px);
             padding:0 6px;
             color:${props=>props.error ? '#d93025':'#1a73e8'};
             background-color:white;
@@ -69,6 +69,7 @@ const StyledCustomSelect = styled.div`
             right: 10px;
             top:50%;
             transform: translateY(-50%);
+            color: ${props=>props.theme.primaryText};
         }
     }
 
@@ -99,7 +100,8 @@ const StyledCustomSelect = styled.div`
         border-radius:5px;
         margin:15px 0;
         z-index:10000;
-        overflow:scroll-behavior;
+        overflow:scroll;
+        max-height:400px;
 
         li{
             padding: 10px 15px;

@@ -36,9 +36,9 @@ export const getReportsRequest = async () => {
   }
 } 
 
-export const createReportRequest = async (userId: string, report: Report) => {
+export const createReportRequest = async (email: string, report: Report) => {
   try {
-    const res = await firestore.collection('reports').doc(userId).set(report);
+    const res = await firestore.collection('reports').doc(email).set(report);
     return{
       error: false,
       reponse: res

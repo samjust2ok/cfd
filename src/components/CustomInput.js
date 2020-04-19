@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import StyledCustomInput from '../styled/StyledCustomInput';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import theme from '../constants/theme';
 import LinLoader from './LinLoader';
+import I from './i';
 
 
 const CustomInput = ({handleChange,success = false, successMessage,loading = false, preValue,error = false,icon, type = 'text',errorMessage,info,placeHolder})=>{
@@ -25,21 +25,21 @@ const CustomInput = ({handleChange,success = false, successMessage,loading = fal
                     </div>
                     {
                        loading ?
-                       <LinLoader color = {theme.dscPink}/> : 
+                       <LinLoader color = {theme.lnGrad2}/> : 
                        icon &&
                         <div className="Icon">
-                            <FontAwesomeIcon color = {theme.dscPink} icon  = {icon}/>
+                            <I icon = {icon}/>
                         </div>
                     }
                 </div>
                 <div className="InfoField">
                     {
                         success ? 
-                        <p className = 'Success'><span><FontAwesomeIcon icon = "check-circle"/></span>{successMessage}</p>:
+                        <p className = 'Item Success'><I classNames = {['md-16']} icon = "check_circle_outline"/><span>{successMessage}</span></p>:
                         error ? 
-                        <p className = 'Error'><span><FontAwesomeIcon icon = "exclamation-circle"/></span>{errorMessage}</p>:
+                        <p className = 'Item Error'><I classNames = {['md-16']} icon = "error_outline"/><span>{errorMessage}</span></p>:
                         info ? 
-                        <p className = 'Info'>{info}</p>:
+                        <p className = 'Item Info'>{info}</p>:
                         null
                     }
                 </div>

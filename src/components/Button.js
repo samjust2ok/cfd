@@ -3,9 +3,9 @@ import StyledButton from "../styled/StyledButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const Button = ({onClick,children})=>{
+const Button = ({onClick,children, className})=>{
     return (
-        <StyledButton onClick = {onClick}>
+        <StyledButton className = {className} onClick = {onClick}>
             {children}
         </StyledButton>
     );

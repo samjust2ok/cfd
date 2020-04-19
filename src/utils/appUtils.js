@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 //test for Empty String
 export const isES = (string)=>string.length <=0;
 export const isNull = (value) => value === null;
@@ -22,4 +24,15 @@ export const validators = {
     emailValidator,
     textValidator: normalTextField,
     phoneNumberValidator: validPhoneNumber
+}
+
+export const getDateArrayInFormat = ()=>{
+    let yearStart = moment().year(2020).month(1).date(1);
+    let now =moment();
+    let parsedDate = []
+    while(yearStart.isBefore(now,'day') || yearStart.isSame(now,'day')){
+        parsedDate.push(yearStart.format("YYYY-MM-DD"))
+        yearStart = yearStart.add(1,'d')
+    }
+    return parsedDate;
 }

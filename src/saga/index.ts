@@ -7,7 +7,7 @@ import { setAppState } from '../actions/appActions';
 import { REPORT_CREATION_LOADING, SHOW_REPORT_CREATION_FAILURE, SHOW_REPORT_CREATION_SUCCESS } from '../constants/labels';
 import { getUserId } from '../services/userServices';
 import axios from 'axios';
-import { storeLiveCases } from '../actions/apiActions';
+import { storeLiveCases,storeCasesTimeStamp } from '../actions/apiActions';
 
 function* getReport(action: GetReportActionType){
   const id: string = action.payload.id;
@@ -36,20 +36,15 @@ function* createReport(action: CreateReportActionType){
 
   let fields = action.payload.report;
 
-  let {userId, firstName, lastName} = yield call(getUserId, fields.personalInformation.email);
+  let email = fields.personalInformation.email;
 
   const report: Report = {
     ...fields,
-    personalInformation:{
-      ...fields.personalInformation,
-      firstName,
-      lastName
-    }
   };
   
 
-  if(userId){
-    const res: { error: boolean, data?: string, message?: string } = yield call(createReportRequest, userId, report);
+  if(email){
+    const res: { error: boolean, data?: string, message?: string } = yield call(createReportRequest, email, report);
     if (res.error) {
       yield put(setAppState({
         appState: SHOW_REPORT_CREATION_FAILURE,
@@ -81,18 +76,24 @@ function* createReport(action: CreateReportActionType){
 
 
 function* getLiveCases(){
-  const res = yield axios.get('https://corona.lmao.ninja/countries/Nigeria');
+  const res = yield axios.get('https://corona.lmao.ninja/v2/countries/Nigeria');
   yield put(storeLiveCases({
     data: res.data,
     place: res.data.country.toLowerCase()
   }))
 
-  const resp = yield axios.get('https://corona.lmao.ninja/all');
+  const resp = yield axios.get('https://corona.lmao.ninja/v2/all');
  
   yield put(storeLiveCases({
     data: resp.data,
     place: 'world'
   }))
+
+  const response = yield axios.get("https://coviddata.github.io/coviddata/v1/countries/stats.json");
+  yield put(storeCasesTimeStamp({
+    data: response.data,
+  }))
+  
 }
 
 

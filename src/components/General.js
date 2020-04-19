@@ -15,9 +15,11 @@ import { REPORT_CREATION_LOADING, SHOW_REPORT_CREATION_SUCCESS, SHOW_REPORT_CREA
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../constants/theme';
 import { setAppState } from '../actions/appActions';
+import PrimaryButton from './PrimaryButton';
+import I from './i';
 
 
-const General = ({style,previous})=>{
+const General = ({style,previous,index})=>{
     const selector = useSelector(state=>state.reportForm.generalQuestions);
     const reportForm = useSelector(state=>state.reportForm);
     const showLoader = useSelector(state=>state.appState[REPORT_CREATION_LOADING]);
@@ -140,7 +142,7 @@ const General = ({style,previous})=>{
     }
 
     return (
-        <FormCategory style = {style} header = 'General Questions'>
+        <FormCategory icon = 'add' index = {index} style = {style} header = 'General Questions'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                         <div className="FieldInputs">
@@ -149,8 +151,12 @@ const General = ({style,previous})=>{
                             <Option preValue = {symptomsSeverity} error = {errorFields.symptomExperienced} handleChange = {symptomExperiencedHandler} label = 'Kindly qualify the symptoms you have had' options = {options.symptomsSeverity}/>
                         </div>
                         <div className = 'ActionButtons'>
-                            <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
-                            <Button onClick = {handleSubmit} text = 'Report Condition'/>
+                            <PrimaryButton onClick = {handlePrevious}>
+                                Back
+                            </PrimaryButton>
+                            <PrimaryButton onClick = {handleSubmit}>
+                                Report Condition
+                            </PrimaryButton>
                         </div>
                 </div>
                 {
@@ -164,29 +170,33 @@ const General = ({style,previous})=>{
                 {
                     transitions2.map(({ item, key, props }) =>
                     item && 
-                       (   <StyledNotification style = {props}>
-                                   <FontAwesomeIcon color = {theme.dscLightGreen} mask = {['far']} size = '5x' icon = 'check-circle'/>
-                                   <p>
-                                       We successfully submitted you details to <span>NCDC</span>
-                                   </p>
-                                   <button onClick = {closeSuccessNotification}> 
-                                       OK
-                                   </button>
+                       (   <StyledNotification onClick = {closeFailureNotification} style = {props}>
+                                <div className = "Content">
+                                        <I classNames = {['md-80']} icon = 'done_all'/>
+                                        <p>
+                                            Your report has been successfully <span>Submitted</span>
+                                        </p>
+                                        <button onClick = {closeSuccessNotification}> 
+                                            OK
+                                        </button>
+                                </div>
                            </StyledNotification>
                        ))
                 }
                 {
                     transitions3.map(({ item, key, props }) =>
                     item && 
-                       (   <StyledNotification style = {props}>
-                                   <FontAwesomeIcon color = {theme.dscRed} size = '5x' icon = 'check-circle'/>
-                                   <p>
-                                       We are sorry, We couldn't complete sending the report
-                                       <span>Ensure you have an active data connection and try again</span>
-                                   </p>
-                                   <button onClick = {closeFailureNotification}>
-                                       OK
-                                   </button>
+                       (   <StyledNotification onClick = {closeFailureNotification} style = {props}>
+                                <div className = 'Content'>
+                                    <I icon = 'error' classNames = {['md-80','error']} />
+                                    <p>
+                                        We are sorry, We couldn't save the report
+                                        <span> <br/> Ensure you have an active data connection and try again</span>
+                                    </p>
+                                    <button onClick = {closeFailureNotification}>
+                                        OK
+                                    </button>
+                                </div>
                            </StyledNotification>
                        ))
                 }

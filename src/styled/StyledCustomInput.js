@@ -17,10 +17,10 @@ const StyledCustomInput = styled.div`
 
             input{
                 width:100%;
-                height: 40px;
+                height: 45px;
                 border: ${props=>props.error ? '2px solid #d93025':'1px solid #dadce0'};
                 border-radius:5px;
-                padding: 0 10px;
+                padding: 0 30px 0 10px;
                 transition: .2s;
                 z-index:1;
             }
@@ -44,13 +44,13 @@ const StyledCustomInput = styled.div`
             } 
 
             input[hasinput = true] ~ div{
-                transform: scale(.75) translateY(-37px);
+                transform: scale(.75) translateY(-42px);
                 color:${props=>props.error ? '#d93025':'#5f6368'};
                 background-color:white;
             }
 
             input:focus ~ div{
-                transform: scale(.75) translateY(-37px);
+                transform: scale(.75) translateY(-42px);
                 color:${props=>props.error ? '#d93025':'#1a73e8'};
                 background-color:white;
             }
@@ -62,28 +62,28 @@ const StyledCustomInput = styled.div`
             right: 10px;
             top:50%;
             transform: translateY(-50%);
-            color:'#5f6368'
+            color:${props=>props.theme.primaryText};
         }
     }
 
     .InfoField{
         font-size:12px;
-
+        
+        .Item{
+                align-items:center;
+                display:flex;
+                span{
+                    margin-left:7px;
+                }
+        }
 
         .Success{
-            color: green;
-
-            span{
-                margin-right:7px;
-            }
+            align-items:center;
+            color:green;
         }
         
         .Error{
             color:#d93025;
-
-            span{
-                margin-right:7px;
-            }
         }
 
         .Info{

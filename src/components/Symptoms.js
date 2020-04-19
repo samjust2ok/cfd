@@ -6,11 +6,11 @@ import { isNull } from 'util';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeSymptoms } from '../actions/storeActions';
 import options from '../constants/options';
+import PrimaryButton from './PrimaryButton';
 
 const iconStyle  = {display:'flex',alignItems:'center'}
 
-
-const Symptoms = ({style,next,previous})=>{
+const Symptoms = ({style,next,previous,index})=>{
     const dispatch = useDispatch();
     const selector = useSelector(state=>state.reportForm.symptoms);
 
@@ -95,7 +95,7 @@ const Symptoms = ({style,next,previous})=>{
     
     
     return (
-        <FormCategory style = {style} header = 'Symtoms'>
+        <FormCategory icon = 'feedback' index ={index} style = {style} header = 'Symtoms'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                     <div className="FieldInputs">
@@ -105,8 +105,12 @@ const Symptoms = ({style,next,previous})=>{
                         <Option preValue = {hasSoreThroat} error = {errorFields.hasSoreThroat} handleChange = {hasSoreThroatHandler} label = 'Do you have a sore throat?' options = {options.yesNo}/>
                     </div>
                     <div className = 'ActionButtons'>
-                            <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
-                            <Button onClick = {handleNext}  text = 'Next'/>
+                            <PrimaryButton onClick = {handlePrevious}>
+                                Back
+                            </PrimaryButton>
+                            <PrimaryButton onClick = {handleNext}>
+                                Next
+                            </PrimaryButton>
                     </div>
                 </div>
             </div>

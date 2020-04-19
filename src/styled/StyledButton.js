@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const buttonHeight = 40;
+const buttonHeight = 50;
 
 const StyledButton = styled.button`
     background-image: ${props=>`linear-gradient(45deg, ${props.theme.lnGrad1} 0%, ${props.theme.lnGrad2} 100%);`};
@@ -12,11 +12,10 @@ const StyledButton = styled.button`
     font-size: 16px;
     border-radius: ${buttonHeight/2 + 'px'};
     transition: all .2 ease-in;
-    margin:100px;
     color:white;
 
     :hover{
-        background: ${props=>`linear-gradient(45deg, ${props.theme.lnGrad3} 0%, ${props.theme.lnGrad2} 100%);`};
+        background-image: ${props=>`linear-gradient(45deg, ${props.theme.lnGrad3} 0%, ${props.theme.lnGrad2} 100%);`};
     }
 `;
 

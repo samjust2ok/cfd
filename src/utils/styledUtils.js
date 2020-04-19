@@ -31,12 +31,24 @@ export const devices = {
         }
     `,
 
+    tabletL: (...args)=> css`
+    @media (min-width:880px){
+        ${css(...args)}
+    }
+    `,
+
     laptop: (...args)=> css`
         @media (min-width:1024px){
             ${css(...args)}
         }
     `,
+
     laptopL: (...args)=> css`
+        @media (min-width:1226px){
+            ${css(...args)}
+        }
+    `,
+    laptopXL: (...args)=> css`
         @media (min-width:1440px){
             ${css(...args)}
         }

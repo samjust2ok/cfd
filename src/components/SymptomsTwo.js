@@ -7,8 +7,9 @@ import { isNull, isES } from '../utils/appUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeSymptoms } from '../actions/storeActions';
 import options from '../constants/options';
+import PrimaryButton from './PrimaryButton';
 
-const SymptomsTwo = ({style,next,previous})=>{
+const SymptomsTwo = ({style,next,previous,index})=>{
 
     const selector = useSelector(state=>state.reportForm.symptoms);
 
@@ -74,7 +75,7 @@ const SymptomsTwo = ({style,next,previous})=>{
     }
 
     return (
-        <FormCategory style = {style} header = 'Symtoms'>
+        <FormCategory icon = 'feedback' index = {index} style = {style} header = 'Symtoms'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                     <div className="FieldInputs">
@@ -83,8 +84,12 @@ const SymptomsTwo = ({style,next,previous})=>{
                         <TextArea errorMessage = 'A description of your symptom is required' preValue = {symptomsDescription} error = {errorFields.symptoms} handleChange = {symptomsHandler} label = 'Describe your symtoms' placeHolder = 'Symptoms'/>
                     </div>
                     <div className = 'ActionButtons'>
-                            <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
-                            <Button onClick = {handleNext}  text = 'Next'/>
+                            <PrimaryButton onClick = {handlePrevious}>
+                                Back
+                            </PrimaryButton>
+                            <PrimaryButton onClick = {handleNext}>
+                                Next
+                            </PrimaryButton>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const I = ({icon,classNames = [], outlined = true})=>{
+const I = ({icon, onClick, classNames = [], outlined = true})=>{
     const clN = `material-icons${outlined ? '-outlined':''} ${classNames.join(' ')}`
     return (
-        <i className = {clN}>{icon}</i>
+        <i onClick = {onClick && onClick} className = {clN}>{icon}</i>
     )
 }
 

@@ -6,10 +6,11 @@ import { isNull, isES } from '../utils/appUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeMedicalInfo } from '../actions/storeActions';
 import options from '../constants/options';
+import PrimaryButton from './PrimaryButton';
 
 
 
-const MedicalHistory = ({style,next,previous})=>{
+const MedicalHistory = ({style,next,previous,index})=>{
     const selector = useSelector(state=>state.reportForm.medicalHistory);
 
 
@@ -83,7 +84,7 @@ const MedicalHistory = ({style,next,previous})=>{
 
 
     return (
-        <FormCategory style = {style} header = 'Medical History'>
+        <FormCategory icon = 'local_hospital' index = {index} style = {style} header = 'Medical History'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                         <div className="FieldInputs">
@@ -92,8 +93,12 @@ const MedicalHistory = ({style,next,previous})=>{
                             <Option preValue = {hasCancer} error = {errorFields.hasCancer} handleChange = {cancerHandler} label = 'Diagonized with any form of cancer?' options = {options.yesNo}/>
                         </div>
                         <div className = 'ActionButtons'>
-                            <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
-                            <Button onClick = {handleNext} text = 'Next'/>
+                            <PrimaryButton onClick = {handlePrevious}>
+                                Back
+                            </PrimaryButton>
+                            <PrimaryButton onClick = {handleNext}>
+                                Next
+                            </PrimaryButton>
                         </div>
                 </div>
             </div>

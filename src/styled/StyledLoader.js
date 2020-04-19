@@ -47,7 +47,7 @@ const AnimatedOverLay = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
-    background-color: rgba(0,0,0,.5);
+    background-color: ${props=>props.theme.overlay};
     z-index:1000;
 `;
 

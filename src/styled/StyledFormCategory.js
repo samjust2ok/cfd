@@ -5,32 +5,53 @@ import { animated } from 'react-spring';
 let StyledFormCategory = styled.div`
     height: 100%;
     width:100%;
-    overflow:hidden;
-    padding:0px 30px;
     flex-shrink:0;
     position:relative;
-    display:flex;
-    flex-direction:column;
+    display:grid;
+    grid-template-rows: 70px 1fr;
+    grid-template-columns:1fr;
+    overflow:hidden;
 
     .FormHeader{
         display:flex;
         align-items:center;
-        height:70px;
-        flex-shrink:0;
+        justify-content:space-between;
+        height:100%;
+        box-shadow: 0px 2px 6px rgba(0,0,0,.05);
+        padding:0 24px;
 
         h1{
-            font-weight:500;
+            font-weight:600;
             font-size:20px;
         }
     }
 
     .FormContent{
-        width:100%;
-        flex-grow:1;
-        padding: 30px 0;
-    
 
-        .Content{
+        width:100%;
+        height:100%;
+        padding:20px 24px;
+    
+        .Indicator{
+                display:flex;
+                justify-content:flex-end;
+            .Ind{
+                background-color: ${props=>props.theme.lnGrad2};
+                box-shadow:0px 2px 2px rgba(0,0,0,.1);
+                padding:3px 10px;
+                font-size:14px;
+                border-radius:4px;
+                color:white;
+                p{
+                    b{
+                        flex-shrink:0;
+                    }
+                }
+            }
+        }
+        .MainContent{
+            margin-top:20px;
+            .Content{
             width:100%;
 
             .Fields{
@@ -62,9 +83,10 @@ let StyledFormCategory = styled.div`
                     display:flex;
                     align-items:center;
                     justify-content:space-between;
-                    margin-top:50px;
+                    margin-top:60px;
                 }
             }
+        }
         }
     }
 

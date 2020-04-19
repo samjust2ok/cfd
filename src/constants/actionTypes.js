@@ -8,3 +8,4 @@ export const SET_APP_STATE = 'SET_APP_STATE';
 export const STORE_USER = 'STORE_USER';
 export const GET_LIVE_CASES = 'GET_LIVE_CASES';
 export const STORE_LIVE_CASES = 'STORE_LIVE_CASES';
+export const STORE_CASES_TIME_STAMP = 'STORE_CASES_TIME_STAMP';

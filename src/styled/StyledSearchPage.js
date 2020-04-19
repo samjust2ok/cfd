@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 import { devices } from '../utils/styledUtils';
 
-const color1 = ['#ffafbd','#2193b0','#cc2b5e','#ee9ca7','#42275a','#bdc3c7','#de6262','#06beb6','#eb3349','#56ab2f','#02aab0','#ddd6f3','#4568dc','#ff5f6d','#36d1dc']
-const color2 = ['#ffc3a0','#6dd5ed','#753a88','#ffdde1','#734b6d','#2c3e50','#de6262','#48b1bf','#f45c43','#a8e063','#00cdac','#faaca8','#b06ab3','#ffc371','#5b86e5']
-
-
-const getRandGradient = ()=>{
-    let rand = Math.floor(Math.random() * (color1.length))
-    return `linear-gradient(-45deg, ${color1[rand]}, ${color2[rand]})`;
-}
-
 
 const StyledSearchPage = styled.div`
     height:100%;
@@ -21,12 +12,10 @@ const StyledSearchPage = styled.div`
         grid-template-rows: 70px 60px 1fr;
         height:100%;
 
-
         .Back{
             display:flex;
             align-items:center;
             padding: 0 20px;
-
             svg:not(:root).svg-inline--fa{
                  font-size:20px;
              }
@@ -90,7 +79,7 @@ const StyledSearchPage = styled.div`
                         align-items:center;
                         font-size: 25px;
                         color:white;
-                        background-image:${getRandGradient()};
+                        background-image: ${props=>`linear-gradient(45deg, ${props.theme.lnGrad1} 0%, ${props.theme.lnGrad2} 100%);`};
                     }
 
                     .Content{
@@ -99,8 +88,11 @@ const StyledSearchPage = styled.div`
                             font-size:17px;
                         }
                         p{
-                            font-size:14px;
-                            color: ${props=>props.theme.dscText}
+                            a{
+                                color: ${props=>props.theme.dscText};
+                                font-size:14px;
+                            }
+
                         }
                     }
                 }
@@ -110,6 +102,16 @@ const StyledSearchPage = styled.div`
                     flex-direction:column;
                     height:100%;
                     justify-content:center;
+                    position:relative;
+
+                    .hide{
+                        position:absolute;
+                        opacity:0;
+                        top:0;
+                        left: 0;
+                        bottom:0;
+                        width:100%;
+                    }
                 }
             }
         }

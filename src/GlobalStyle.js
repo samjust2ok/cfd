@@ -36,6 +36,32 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
+    .md-12{
+        font-size:12px;
+    }
+
+    .md-16{
+        font-size:16px;
+    }
+
+    .md-18{
+        font-size:18px;
+    }
+
+    .md-24{
+        font-size:24px;
+    }
+
+    .md-30{
+        font-size:30px;
+    }
+
+    .md-80{
+        font-size:80px;
+    }
+
+    
+
     .Scrollbar{
             overflow:hidden;
             overflow-y:scroll;

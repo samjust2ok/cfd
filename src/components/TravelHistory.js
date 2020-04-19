@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import FormCategory from './FormCategory'
-import Button from './Button';
 import Option from './Option';
 import { animated, useTransition } from 'react-spring';
 import CustomInput from './CustomInput';
 import { CustomDatePicker } from './Input';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../constants/theme';
 import { isES, isNull } from '../utils/appUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeTravelHistory } from '../actions/storeActions';
 import options from '../constants/options';
+import PrimaryButton from './PrimaryButton';
+import I from './i';
 
-const iconStyle  = {display:'flex',alignItems:'center'}
+const iconStyle  = {display:'flex',alignItems:'center', color: theme.lnGrad2}
 
 
-const TravelHistory = ({style,next,previous})=>{
+const TravelHistory = ({style,next,previous,index})=>{
     
 
     const selector = useSelector(state=>state.reportForm.travelHistory);
@@ -102,7 +102,7 @@ const TravelHistory = ({style,next,previous})=>{
 
     
     return (
-        <FormCategory style = {style} header = 'Travel History'>
+        <FormCategory icon = 'flight' index = {index} style = {style} header = 'Travel History'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                 <div className="FieldInputs">
@@ -112,12 +112,12 @@ const TravelHistory = ({style,next,previous})=>{
                         item && (
                             <animated.div style = {props} className="Compliment">
                                 <div className="Field-Layout One-Field">
-                                    <CustomInput preValue = {countryVisited} errorMessage = 'Input the country you visited during your last visit' error = {errorFields.countryVisited} handleChange = {countryVisitedHandler} icon = 'plane-departure' placeHolder = 'Country visited' info = "Enter a valid country name"/>
+                                    <CustomInput preValue = {countryVisited} errorMessage = 'Input the country you visited during your last visit' error = {errorFields.countryVisited} handleChange = {countryVisitedHandler} icon = 'flag' placeHolder = 'Country visited' info = "Enter a valid country name"/>
                                 </div>
                                 <div style = {{marginTop:'20px'}} className = 'Field-Layout Icon-Side-Field'>
                                     <CustomDatePicker preValue = {dateArrived} handleChange = {dateArrivedHandler} label = 'When did you arrive Nigeria?'/>
                                     <div style = {iconStyle}>
-                                        <FontAwesomeIcon color = {theme.dscPink} icon = 'plane-arrival'/>
+                                        <I icon = 'flight_land'/>
                                     </div>
                                 </div>
                             </animated.div>
@@ -126,8 +126,12 @@ const TravelHistory = ({style,next,previous})=>{
                     }
                 </div>
                         <div className = 'ActionButtons'>
-                            <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
-                            <Button onClick = {handleNext}  text = 'Next'/>
+                            <PrimaryButton onClick = {handlePrevious}>
+                                Back
+                            </PrimaryButton>
+                            <PrimaryButton onClick = {handleNext}>
+                                Next
+                            </PrimaryButton>
                         </div>
                 </div>
             </div>

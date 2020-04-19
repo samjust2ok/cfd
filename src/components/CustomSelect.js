@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import StyledCustomSelect from '../styled/StyledCustomSelect';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import I from './i';
 
 
 const CustomSelect = ({handleChange, preValue, options, error = false,icon, type = 'text',errorMessage,info,placeHolder})=>{
@@ -42,13 +42,13 @@ const CustomSelect = ({handleChange, preValue, options, error = false,icon, type
                         }
                     </div>
                     <div className="Icon">
-                            <FontAwesomeIcon icon  = 'caret-down'/>
+                            <I icon  = 'arrow_drop_down'/>
                     </div>
                 </div>
                 <div className="InfoField">
                     {
                         error ? 
-                        <p className = 'Error'><span><FontAwesomeIcon icon = "exclamation-circle"/></span>{errorMessage}</p>:
+                        <p className = 'Error'><span><I classNames = {['md-16']} icon = "error_outline"/></span>{errorMessage}</p>:
                         info ? 
                         <p className = 'Info'>{info}</p>:
                         null

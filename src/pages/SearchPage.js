@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ncdcCallCenter } from '../constants/appConst';
 import { useTransition, animated} from 'react-spring';
 import { useHistory } from 'react-router-dom';
+import I from '../components/i';
 
 const SearchPage = ()=>{
     const [list, setList] = useState(ncdcCallCenter);
@@ -48,12 +49,14 @@ const SearchPage = ()=>{
                                     </div>
                                     <div className="Content ScrollbarHide">
                                         <h3>{list[i].state}</h3>
-                                        <p>{list[i].number}</p>
+                                        <p><a href="tel:">{list[i].number}</a></p>
                                     </div>
                                 </div>
                                 <div className="Icons">
-                                    <FontAwesomeIcon icon = 'phone'/>
-                                    <FontAwesomeIcon icon = 'ellipsis-h'/>
+                                    <a className = "hide" href="tel:">
+                                        {list[i].number}
+                                    </a>
+                                    <I icon = 'call'/>
                                 </div>
                             </animated.div>
                         ))
