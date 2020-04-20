@@ -64,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
 
     .Scrollbar{
             overflow:hidden;
-            overflow-y:scroll;
+            overflow-y:auto;
                 /* width */
         ::-webkit-scrollbar {
             display:block;

@@ -145,10 +145,8 @@ const UserInfoForm = ({style,next,index})=>{
                         <CustomInput preValue = {firstName} errorMessage = 'Enter your first name' error = {errorFields.fName} handleChange = {firstNameHandler} placeHolder = 'First name'/>
                         <CustomInput preValue = {lastName} errorMessage = 'Enter your last name' error = {errorFields.lName} handleChange = {lastNameHandler} placeHolder = 'Last name'/>
                         </div>
-                        <div className="Field-Layout One-Field">
+                        <div className="Field-Layout Two-Field">
                             <CustomInput success = {emailCheckSuccess} successMessage = 'New report' loading = {checkingEmail} preValue = {email} errorMessage = {emailError} error = {errorFields.email} handleChange = {emailHandler} icon = 'alternate_email' placeHolder = 'Email address' info = "Enter the email you created an account with"/>
-                        </div>
-                        <div className="Field-Layout One-Field">
                             <CustomInput preValue = {phoneNumber} icon = 'call' errorMessage = 'Enter a valid phone number' error = {errorFields.pNumber} handleChange = {phoneNumberHandler}  icon = 'phone' placeHolder = 'Phone number' info = "Enter a valid mobile number"/>
                         </div>
                         <div className="Field-Layout Two-Field-Phone">

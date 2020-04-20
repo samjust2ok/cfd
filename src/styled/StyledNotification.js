@@ -1,5 +1,6 @@
 import styled, { keyframes} from 'styled-components';
 import { animated } from 'react-spring';
+import { devices } from '../utils/styledUtils';
 
 const up =  keyframes`
     0% {
@@ -77,6 +78,17 @@ const StyledNotification = styled.div`
             font-size:14px;
         }
     }
+
+    ${devices.mobileXL`
+        .Content{
+            max-width:500px;
+            width:80%;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            border-radius:15px;
+        }
+    `}
 `;
 
 export default animated(StyledNotification);

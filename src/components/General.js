@@ -170,7 +170,7 @@ const General = ({style,previous,index})=>{
                 {
                     transitions2.map(({ item, key, props }) =>
                     item && 
-                       (   <StyledNotification onClick = {closeFailureNotification} style = {props}>
+                       (   <StyledNotification onClick = {closeSuccessNotification} style = {props}>
                                 <div className = "Content">
                                         <I classNames = {['md-80']} icon = 'done_all'/>
                                         <p>

@@ -54,7 +54,7 @@ const Navigation = styled.nav`
                     width:100%;
                     border:none;
                     
-                    border-radius: 25px;
+                    border-radius: 5px;
                     transition: all .2 ease-in;
 
                     a{

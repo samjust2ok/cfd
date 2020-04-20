@@ -36,7 +36,7 @@ import moment from 'moment';
 
 
 
-const URL = 'report-covid.netlify.com';
+const URL = 'cfd-covid.netlify.com';
 const SHARE_QUOTE = 'Report suspected cases of COVID-19 to help the NCDC combat the spread. | Help flatten the curve';
 const HASHTAG = '#ReportCovid';
 const TITLE = 'REPORT COVID';

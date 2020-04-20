@@ -10,7 +10,7 @@ const StyledButton = styled.button`
     height:${buttonHeight+ 'px'};
     border:none;
     font-size: 16px;
-    border-radius: ${buttonHeight/2 + 'px'};
+    border-radius: 5px;
     transition: all .2 ease-in;
     color:white;
 
