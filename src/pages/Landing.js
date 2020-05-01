@@ -242,6 +242,95 @@ const Landing  = ()=>{
                     </div>
                 </div>
             </Header>
+            <TrackBox>
+                <div className="Container">
+                    <div className="Header">
+                        <h1>Need help remebering where you've been to?</h1>
+                        <p>Use your device navigation stystem to track where you've been to. This information can help you make decisions on what to do</p>
+                    </div>
+                    <div className="Body">
+                        <div className="Title">
+                            <h3>Try it now</h3>
+                        </div>
+                        <div className="Buttons">
+                        <button className="TButton">
+                        <a href="https://www.google.com/maps/timeline">
+                            <span>
+                                <img src={gmap} alt=""/>
+                            </span>
+                            <span>Android Devices</span>
+                        </a>
+                    </button>
+                    <button onClick = {()=>setShowAppleHelp(true)} className="TButton">
+                        <a onClick = {(e)=>e.preventDefault()} href="#">
+                            <span>
+                                <img src={imap} alt=""/>
+                            </span>
+                            <span>Apple Devices</span>
+                        </a>
+                    </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="Underlay">
+                    <I icon = 'my_location' classNames = {['md-70']}/>
+                </div>
+            </TrackBox>
+            <HeatMap>
+                <div className="Container">
+                    <div ref = {mapRef} className="Content">
+
+                    </div>
+                </div>
+            </HeatMap>
+            <ChartBox>
+                <div className="Container">
+                    <div className="Header">
+                        <h1>
+                            Keep up with daily Statistics on COVID-19
+                        </h1>
+                        <p>Be aware of what's happening</p>
+                    </div>
+                    <div className="ChartsContainer ScrollbarHide">
+                        <div className="Chart">
+                            <div className="Title">
+                                <h1>Cases per day</h1>
+                                {
+                                    dailyNewCases[0] && 
+                                    <p>{`${moment(dailyNewCases[0].date).format('MMMM, YYYY')} - ${moment().format('MMMM, YYYY')}`}</p>
+                                }
+                                {
+                                    dailyNewCases[0] &&
+                                    <p>Daily Average <span className = 'Tag'>(over duration)</span>
+                                        {
+                                            Number(_.sumBy(dailyNewCases,(elem)=>elem.data)/dailyNewCases.length).toFixed(2)
+                                        }
+                                    </p>
+                                }
+                            </div>
+                            <CustomAreaChart cases = {true} data = {dailyNewCases}/>
+                        </div>
+                        <div className="Chart">
+                            <div className="Title">
+                                <h1>Cummulative Death</h1>
+                                {
+                                    cumulativeDeath[0] &&
+                                    <p>{`${moment(cumulativeDeath[0].date).format('MMMM, YYYY')} - ${moment().format('MMMM, YYYY')}`}</p>
+                                }
+                                {
+                                    cumulativeDeath[0] &&
+                                    <p>Daily Average <span className = 'Tag'>(over duration)</span>
+                                        {
+                                            Number(_.sumBy(cumulativeDeath,(elem)=>elem.data)/cumulativeDeath.length).toFixed(2)
+                                        }
+                                    </p>
+                                }
+                            </div>
+                            <CustomAreaChart cases = {false} data = {cumulativeDeath}/>
+                        </div>
+                    </div>
+                </div>
+            </ChartBox>
             <HelpBox>
                 <div className="Container">
                     <div className="ItemContent">
@@ -362,95 +451,6 @@ const Landing  = ()=>{
                     </div>
                 </div>
             </ContactBox>
-            <TrackBox>
-                <div className="Container">
-                    <div className="Header">
-                        <h1>Need help remebering where you've been to?</h1>
-                        <p>Use your device navigation stystem to track where you've been to. This information can help you make decisions on what to do</p>
-                    </div>
-                    <div className="Body">
-                        <div className="Title">
-                            <h3>Try it now</h3>
-                        </div>
-                        <div className="Buttons">
-                        <button className="TButton">
-                        <a href="https://www.google.com/maps/timeline">
-                            <span>
-                                <img src={gmap} alt=""/>
-                            </span>
-                            <span>Android Devices</span>
-                        </a>
-                    </button>
-                    <button onClick = {()=>setShowAppleHelp(true)} className="TButton">
-                        <a onClick = {(e)=>e.preventDefault()} href="#">
-                            <span>
-                                <img src={imap} alt=""/>
-                            </span>
-                            <span>Apple Devices</span>
-                        </a>
-                    </button>
-                        </div>
-                    </div>
-                </div>
-                <div className="Underlay">
-                    <I icon = 'my_location' classNames = {['md-70']}/>
-                </div>
-            </TrackBox>
-            <HeatMap>
-                <div className="Container">
-                    <div ref = {mapRef} className="Content">
-
-                    </div>
-                </div>
-            </HeatMap>
-            <ChartBox>
-                <div className="Container">
-                    <div className="Header">
-                        <h1>
-                            Keep up with daily Statistics on COVID-19
-                        </h1>
-                        <p>Be aware of what's happening</p>
-                    </div>
-                    <div className="ChartsContainer ScrollbarHide">
-                        <div className="Chart">
-                            <div className="Title">
-                                <h1>Cases per day</h1>
-                                {
-                                    dailyNewCases[0] && 
-                                    <p>{`${moment(dailyNewCases[0].date).format('MMMM, YYYY')} - ${moment().format('MMMM, YYYY')}`}</p>
-                                }
-                                {
-                                    dailyNewCases[0] &&
-                                    <p>Daily Average <span className = 'Tag'>(over duration)</span>
-                                        {
-                                            Number(_.sumBy(dailyNewCases,(elem)=>elem.data)/dailyNewCases.length).toFixed(2)
-                                        }
-                                    </p>
-                                }
-                            </div>
-                            <CustomAreaChart cases = {true} data = {dailyNewCases}/>
-                        </div>
-                        <div className="Chart">
-                            <div className="Title">
-                                <h1>Cummulative Death</h1>
-                                {
-                                    cumulativeDeath[0] &&
-                                    <p>{`${moment(cumulativeDeath[0].date).format('MMMM, YYYY')} - ${moment().format('MMMM, YYYY')}`}</p>
-                                }
-                                {
-                                    cumulativeDeath[0] &&
-                                    <p>Daily Average <span className = 'Tag'>(over duration)</span>
-                                        {
-                                            Number(_.sumBy(cumulativeDeath,(elem)=>elem.data)/cumulativeDeath.length).toFixed(2)
-                                        }
-                                    </p>
-                                }
-                            </div>
-                            <CustomAreaChart cases = {false} data = {cumulativeDeath}/>
-                        </div>
-                    </div>
-                </div>
-            </ChartBox>
             <FooterBox>
                     <div className="Container">
                             <div className="Content">
