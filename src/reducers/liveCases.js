@@ -1,8 +1,11 @@
-import { STORE_LIVE_CASES, STORE_CASES_TIME_STAMP } from '../constants/actionTypes';
+import { STORE_LIVE_CASES, STORE_CASES_TIME_STAMP, STORE_HEAT_MAP_DATA } from '../constants/actionTypes';
 import { handleActions } from 'redux-actions'
 import { produce } from 'immer';
 import { getDateArrayInFormat } from '../utils/appUtils';
+import { latlon } from '../constants/appConst';
+import _ from 'lodash';
 
+const google = window.google;
 
 
 const initialState = {
@@ -15,7 +18,8 @@ const initialState = {
     nigeriaTimeStamp:{
         cumulativeDeath: [],
         dailyNewCases:[]
-    }
+    },
+    heatMap:[]
 }
 
 
@@ -57,6 +61,26 @@ export default handleActions({
             dailyNewCases: dataArrayNewCases
        }
     }),
+    [STORE_HEAT_MAP_DATA]: produce((state,action)=>{
+        let  { data }  = action.payload;
+        
+        const loc = latlon;
+    
+        let retArr = [];
+        data.map(dataPoint=>{
+            let index;
+            while((index = _.findIndex(loc, ['admin', dataPoint.States]))!== -1){
+                let item = loc[index];
+                retArr.push({
+                    lat: parseFloat(item.lat),
+                    lng: parseFloat(item.lng)
+                })
+                loc.splice(index,1)
+            }
+        })
+        
+        state.heatMap = retArr
+    })
 },
 initialState
 ) 

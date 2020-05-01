@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import StyledLandingPage, {Navigation,Header,HelpBox,ContactBox,ChartBox,TrackBox,FooterBox,PopUpBox,ShareBox,AppleBox} from '../styled/StyledLandingPage';
+import StyledLandingPage, {Navigation,Header,HelpBox,ContactBox,ChartBox,TrackBox,FooterBox,PopUpBox,ShareBox,HeatMap,AppleBox} from '../styled/StyledLandingPage';
 import MapSvg from '../components/MapSvg';
 import imap from '../images/imap.png';
 import gmap from '../images/gmap.png';
@@ -29,37 +29,28 @@ import {
     LinkedinIcon,
 } from 'react-share';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLiveCases } from '../actions/apiActions';
+import { getLiveCases, getHeatMapData } from '../actions/apiActions';
 import I from '../components/i';
 import Button from '../components/Button';
 import moment from 'moment';
 
+const google = window.google;
 
-
-const URL = 'cfd-covid.netlify.com';
+const URL = 'kontagion.africa';
 const SHARE_QUOTE = 'Report suspected cases of COVID-19 to help the NCDC combat the spread. | Help flatten the curve';
 const HASHTAG = '#ReportCovid';
 const TITLE = 'REPORT COVID';
-
-const tabs = [
-    {
-        title: 'Survival Tips'
-    },
-    {
-        title: 'Notification'
-    }
-]
-
-const bgs = ['white',theme.dscBGFull]
-
 
 const Landing  = ()=>{
     const dispatch = useDispatch();
     const casesSelector = useSelector(state=>state.liveCases);
     const {cumulativeDeath,dailyNewCases} = casesSelector.nigeriaTimeStamp;
+    const heatMap = casesSelector.heatMap;
     const [mobileMenuOpen,setMobileMenuOpen] = useState(false);
     const [showShare,setShowShare] = useState(false);
     const [showAppleHelp,setShowAppleHelp] = useState(false);
+    const [userLocation,setUserLocation] = useState([6.5244,3.3792]);
+    const mapRef = useRef(null);
 
     const toggleMenu = ()=>{
         setMobileMenuOpen(!mobileMenuOpen)
@@ -71,7 +62,36 @@ const Landing  = ()=>{
     }
     useEffect(()=>{
         dispatch(getLiveCases())
+        dispatch(getHeatMapData())
+        if(navigator.geolocation)
+        navigator.geolocation.getCurrentPosition(getLocationSuccess);
     },[])
+
+
+    const getLocationSuccess = (position)=>{
+        const latitude  = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        setUserLocation([latitude,longitude])
+    }
+    
+
+    useEffect(()=>{   
+       if(heatMap.length > 0){
+           let data = heatMap.map(h=>new google.maps.LatLng(h.lat,h.lng));
+            let currentLocation = new google.maps.LatLng(userLocation[0],userLocation[1]);
+            let map = new google.maps.Map(mapRef.current, {
+                center: currentLocation,
+                zoom: 8,
+                mapTypeId: 'terrain'
+            });
+
+            let heatmap = new google.maps.visualization.HeatmapLayer({
+                data: data
+            });
+            
+            heatmap.setMap(map);
+        }
+    },[heatMap,userLocation])
 
 
     const transitions = useTransition(mobileMenuOpen, null, {
@@ -378,6 +398,13 @@ const Landing  = ()=>{
                     <I icon = 'my_location' classNames = {['md-70']}/>
                 </div>
             </TrackBox>
+            <HeatMap>
+                <div className="Container">
+                    <div ref = {mapRef} className="Content">
+
+                    </div>
+                </div>
+            </HeatMap>
             <ChartBox>
                 <div className="Container">
                     <div className="Header">

@@ -2,12 +2,13 @@ import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { ReportActionTypes, Report, GetReportActionType, CreateReportActionType } from '../constants/types'
 import { getReportRequest, getReportsRequest, createReportRequest } from '../services/reportsServices';
 import { fetchReportsSuccess, fetchReportsFailure, createNewReportByCitySuccess, createNewReportByCityFailure, fetchSingleReportFailure, fetchSingleReportSuccess } from '../actions/actions'
-import { CREATE_REPORT, GET_LIVE_CASES } from '../constants/actionTypes';
+import { CREATE_REPORT, GET_LIVE_CASES, GET_HEAT_MAP__DATA } from '../constants/actionTypes';
 import { setAppState } from '../actions/appActions';
 import { REPORT_CREATION_LOADING, SHOW_REPORT_CREATION_FAILURE, SHOW_REPORT_CREATION_SUCCESS } from '../constants/labels';
 import { getUserId } from '../services/userServices';
 import axios from 'axios';
-import { storeLiveCases,storeCasesTimeStamp } from '../actions/apiActions';
+import { storeLiveCases,storeCasesTimeStamp, storeHeatMapData} from '../actions/apiActions';
+
 
 function* getReport(action: GetReportActionType){
   const id: string = action.payload.id;
@@ -76,24 +77,27 @@ function* createReport(action: CreateReportActionType){
 
 
 function* getLiveCases(){
-  const res = yield axios.get('https://corona.lmao.ninja/v2/countries/Nigeria');
-  yield put(storeLiveCases({
-    data: res.data,
-    place: res.data.country.toLowerCase()
-  }))
-
-  const resp = yield axios.get('https://corona.lmao.ninja/v2/all');
- 
-  yield put(storeLiveCases({
-    data: resp.data,
-    place: 'world'
-  }))
-
   const response = yield axios.get("https://coviddata.github.io/coviddata/v1/countries/stats.json");
   yield put(storeCasesTimeStamp({
     data: response.data,
   }))
   
+}
+
+function* getHeatMapData(){
+  const response = yield axios.request({
+    method: 'get',
+    url: 'https://nigeria-covid-19.p.rapidapi.com/api/states',
+    headers:{
+        "x-rapidapi-host": "nigeria-covid-19.p.rapidapi.com",
+      "x-rapidapi-key": "64c8bf67aamsh270dfcd54556557p19c7ddjsnf55abf93fcd1"
+    },
+    })
+
+  yield put(storeHeatMapData({
+    data: response.data
+  }))
+    
 }
 
 
@@ -114,11 +118,16 @@ function* watchGetLiveCases(){
   yield takeLatest(GET_LIVE_CASES, getLiveCases)
 }
 
+function* watchGetHeatMapData(){
+  yield takeLatest(GET_HEAT_MAP__DATA, getHeatMapData)
+}
+
 export default function* reportSaga(){
   yield all([
     fork(watchGetReport),
     fork(watchFetchReports),
     fork(watchCreateReport),
-    fork(watchGetLiveCases)
+    fork(watchGetLiveCases),
+    fork(watchGetHeatMapData)
   ]);
 }

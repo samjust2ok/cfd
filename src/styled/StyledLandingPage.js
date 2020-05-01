@@ -1297,4 +1297,17 @@ const AppleBox = styled.ul`
     `}
 `;
 
-export {StyledLandingPage as default, Navigation, Header,HelpBox,ContactBox,ChartBox, TrackBox,FooterBox,PopUpBox,ShareBox,AppleBox}
+const HeatMap = styled.div`
+    width: 100%;
+    height:700px;
+
+    .Container{
+        height:100%;
+        .Content{
+            padding: 0 40px;
+            height:100%;
+        }
+    }
+`;
+
+export {StyledLandingPage as default, Navigation, Header,HelpBox,ContactBox,HeatMap,ChartBox, TrackBox,FooterBox,PopUpBox,ShareBox,AppleBox}
