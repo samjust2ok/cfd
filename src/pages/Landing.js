@@ -4,16 +4,14 @@ import MapSvg from '../components/MapSvg';
 import imap from '../images/imap.png';
 import gmap from '../images/gmap.png';
 import medical from '../images/medical.svg';
+import logo from '../images/company.svg';
 import doctor from '../images/doctor.png';
 import stayathome from '../images/stayathome.jpg';
 import socialdist from '../images/socialdist.jpg';
 import sanitize from '../images/sanitize.jpg';
 import isolate from '../images/isolate.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import theme from '../constants/theme';
 import { useTransition,animated } from 'react-spring';
-import TabView from '../components/TabView';
-import { TotalStatistics, World, SurvivalInfo } from '../components/InfoCards';
 import CustomAreaChart from '../components/CustomAreaChart';
 import _ from 'lodash';
 import {
@@ -105,10 +103,10 @@ const Landing  = ()=>{
             <Navigation className = 'Show'>
                 <div className="NavigationContainer">
                     <div className="Logo">
-
+                    <img src={logo} alt=""/>
                     </div>
-                    <div className="MenuBar">
-                        <I classNames = {['md-30']} onClick = {toggleMenu} icon = {mobileMenuOpen ? 'close':'menu'}/>
+                    <div className="MenuBar"> 
+                        <I classNames = {['md-30']} onClick = {toggleShowShare} icon = 'share'/>
                     </div>
                     <div className="NavigationItems Account">
                         <ul className = "DropdownList">
@@ -482,8 +480,8 @@ const Landing  = ()=>{
                                 </div>
                                 <div className="Location">
                                     <I icon = 'place' classNames = {['md-30']}/>
-                                    <p>Ibadan,</p>
-                                    <p>Oyo State, Nigeria</p>
+                                    <p>Abuja,</p>
+                                    <p>Nigeria</p>
                                 </div>
                             </div>
                     </div>

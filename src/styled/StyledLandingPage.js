@@ -80,7 +80,12 @@ const Navigation = styled.nav`
         justify-content:space-between;
         align-items:center;
         height:100%;
-        
+
+        .Logo{
+            img{
+                height 40px;
+            }
+        }
         
         .NavigationItems{
             align-items:center;
