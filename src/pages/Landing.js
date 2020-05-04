@@ -1,15 +1,13 @@
 import React, {useState, useEffect, useRef} from 'react';
-import StyledLandingPage, {Navigation,Header,HelpBox,ContactBox,ChartBox,TrackBox,FooterBox,PopUpBox,ShareBox,HeatMap,AppleBox} from '../styled/StyledLandingPage';
-import MapSvg from '../components/MapSvg';
+import StyledLandingPage, {Navigation,Header,HelpBox,ContactBox,TileBox,ChartBox,TrackBox,FooterBox,PopUpBox,ShareBox,HeatMap,AppleBox} from '../styled/StyledLandingPage';
 import imap from '../images/imap.png';
 import gmap from '../images/gmap.png';
 import medical from '../images/medical.svg';
 import logo from '../images/company.svg';
-import doctor from '../images/doctor.png';
-import stayathome from '../images/stayathome.jpg';
+import home from '../images/home.jpeg';
 import socialdist from '../images/socialdist.jpg';
-import sanitize from '../images/sanitize.jpg';
-import isolate from '../images/isolate.jpg';
+import wash from '../images/wash.jpeg';
+import isolate from '../images/isolate.jpeg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTransition,animated } from 'react-spring';
 import CustomAreaChart from '../components/CustomAreaChart';
@@ -31,6 +29,7 @@ import { getLiveCases, getHeatMapData } from '../actions/apiActions';
 import I from '../components/i';
 import Button from '../components/Button';
 import moment from 'moment';
+import Map from '../components/Map';
 
 const google = window.google;
 
@@ -74,7 +73,7 @@ const Landing  = ()=>{
     
 
     useEffect(()=>{   
-       if(heatMap.length > 0){
+       if(heatMap.length > 0 && google){
            let data = heatMap.map(h=>new google.maps.LatLng(h.lat,h.lng));
             let currentLocation = new google.maps.LatLng(userLocation[0],userLocation[1]);
             let map = new google.maps.Map(mapRef.current, {
@@ -91,6 +90,7 @@ const Landing  = ()=>{
         }
     },[heatMap,userLocation])
 
+    
 
     const transitions = useTransition(mobileMenuOpen, null, {
         from: {opacity: 0, height: 0 },
@@ -220,28 +220,15 @@ const Landing  = ()=>{
                     ))
                 }
             </Navigation>
-            <Header>
+            {/* <TileBox>
                 <div className="Container">
-                    <div className="Contents">
-                        <div className="HeaderContent">
-                            <h1>Showing symptoms of COVID-19?
-                            </h1>
-                            <p>Help the NCDC reach you by providing neccessary information on our report page</p>
-                            <div className="Button">
-                            <Button>
-                                <a href="/report">
-                                    <span>Report a case now</span>
-                                    <I icon = 'arrow_forward'/>
-                                </a>
-                            </Button>
-                            </div>
-                        </div>
-                        <div className="Illustration">
-                            <img src={medical} alt=""/>
+                    <div className="Content">
+                        <div className="MapBox">
+                            <Map/>
                         </div>
                     </div>
                 </div>
-            </Header>
+            </TileBox> */}
             <TrackBox>
                 <div className="Container">
                     <div className="Header">
@@ -276,6 +263,28 @@ const Landing  = ()=>{
                     <I icon = 'my_location' classNames = {['md-70']}/>
                 </div>
             </TrackBox>
+            <Header>
+                <div className="Container">
+                    <div className="Contents">
+                        <div className="HeaderContent">
+                            <h1>Showing symptoms of COVID-19?
+                            </h1>
+                            <p>Help the NCDC reach you by providing neccessary information on our report page</p>
+                            <div className="Button">
+                            <Button>
+                                <a href="/report">
+                                    <span>Report a case now</span>
+                                    <I icon = 'arrow_forward'/>
+                                </a>
+                            </Button>
+                            </div>
+                        </div>
+                        <div className="Illustration">
+                            <img src={medical} alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </Header>
             <HeatMap>
                 <div className="Container">
                     <div ref = {mapRef} className="Content">
@@ -357,7 +366,7 @@ const Landing  = ()=>{
                                 <div className="ImageBox">
                                     <div className="ImageContainer">
                                         <div className="Image">
-                                        <img src={stayathome} alt=""/>
+                                        <img src={home} alt=""/>
                                         </div>
                                         <div className="TextContent">
                                             <div className="Text">
@@ -369,11 +378,11 @@ const Landing  = ()=>{
                                 <div className="ImageBox">
                                     <div className="ImageContainer">
                                         <div className="Image">
-                                        <img src={sanitize} alt=""/>
+                                        <img src={wash} alt=""/>
                                         </div>
                                         <div className="TextContent">
                                             <div className="Text">
-                                                <p>Wash your hand frequently with an alcohol based sanitizer, avoid touching your face often</p>
+                                                <p>Wash your hand frequently with soap or sanitize with alcohol based sanitizer, avoid touching your face often</p>
                                             </div>
                                         </div>
                                     </div>

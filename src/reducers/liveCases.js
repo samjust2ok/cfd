@@ -73,7 +73,8 @@ export default handleActions({
                 let item = loc[index];
                 retArr.push({
                     lat: parseFloat(item.lat),
-                    lng: parseFloat(item.lng)
+                    lng: parseFloat(item.lng),
+                    cases: dataPoint.No_of_cases
                 })
                 loc.splice(index,1)
             }

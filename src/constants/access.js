@@ -1,0 +1,1 @@
+export const MAP_GL = 'pk.eyJ1Ijoic2FtdWVsLWZlbGl4IiwiYSI6ImNrOXJjYjVoYjBzcmEzZW54MHhxeTZybDUifQ.3xTiBB-jKu15uHW7fWMH_g';

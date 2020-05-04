@@ -998,9 +998,11 @@ const TrackBox = styled.div`
         }
     }
     .Container{
+        min-height:550px;
         width:100%;
         background-color: ${props=>props.theme.greyBG};
         padding:  40px 0;
+        
 
             .Header{
                 padding: 0 24px;
@@ -1087,6 +1089,7 @@ const TrackBox = styled.div`
         }
         .Container{
             padding: 80px 0;
+            padding-top:150px;
 
             .Header{
                 padding:0 80px;
@@ -1315,4 +1318,26 @@ const HeatMap = styled.div`
     }
 `;
 
-export {StyledLandingPage as default, Navigation, Header,HelpBox,ContactBox,HeatMap,ChartBox, TrackBox,FooterBox,PopUpBox,ShareBox,AppleBox}
+const TileBox = styled.div`
+    height: 100vh;
+    width: 100vw;
+
+    .Container{
+        width:100%;
+        height:100%;
+
+        .Content{
+            width:100%;
+            height:100%;
+        
+
+            .MapBox{
+                width:100%;
+                height:100%;
+
+            }
+        }
+    }
+`;
+
+export {StyledLandingPage as default, Navigation, TileBox, Header,HelpBox,ContactBox,HeatMap,ChartBox, TrackBox,FooterBox,PopUpBox,ShareBox,AppleBox}

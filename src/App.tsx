@@ -27,6 +27,7 @@ import Profile from './pages/Profile';
 
 
 
+
 library.add(fab,faThumbsUp,faUserMinus,faVirus,faCheckCircle,faBell,faArrowRight,faAngleRight,faAsterisk,faUser,faSignOutAlt,faCog,faFileMedical,faPhone,faSearch,faEllipsisH,faExclamationCircle,faEye,faEyeSlash,faArrowLeft,faHandsHelping,faInfoCircle,faUserAlt,faCaretRight,faBars,faTimes,faFileMedicalAlt,faShareAlt,faPlaneArrival, faCheckCircle,faPhone,faPhoneVolume,faPlaneDeparture,faArrowLeft,faAngleDown,faCaretDown,faCity,faEnvelope);
 
 const App = () => (
