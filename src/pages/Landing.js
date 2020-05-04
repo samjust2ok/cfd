@@ -78,7 +78,7 @@ const Landing  = ()=>{
             let currentLocation = new google.maps.LatLng(userLocation[0],userLocation[1]);
             let map = new google.maps.Map(mapRef.current, {
                 center: currentLocation,
-                zoom: 8,
+                zoom: 10,
                 mapTypeId: 'terrain'
             });
 
@@ -227,8 +227,15 @@ const Landing  = ()=>{
                             <Map/>
                         </div>
                     </div>
-                </div>
-            </TileBox> */}
+                    </div>
+                </TileBox> */}
+                <HeatMap>
+                    <div className="Container">
+                        <div ref = {mapRef} className="Content">
+    
+                        </div>
+                    </div>
+                </HeatMap>
             <TrackBox>
                 <div className="Container">
                     <div className="Header">
@@ -285,13 +292,6 @@ const Landing  = ()=>{
                     </div>
                 </div>
             </Header>
-            <HeatMap>
-                <div className="Container">
-                    <div ref = {mapRef} className="Content">
-
-                    </div>
-                </div>
-            </HeatMap>
             <ChartBox>
                 <div className="Container">
                     <div className="Header">
@@ -489,7 +489,7 @@ const Landing  = ()=>{
                                 </div>
                                 <div className="Location">
                                     <I icon = 'place' classNames = {['md-30']}/>
-                                    <p>Abuja,</p>
+                                    <p>Lagos,</p>
                                     <p>Nigeria</p>
                                 </div>
                             </div>

@@ -1002,6 +1002,7 @@ const TrackBox = styled.div`
         width:100%;
         background-color: ${props=>props.theme.greyBG};
         padding:  40px 0;
+        padding-top:150px;
         
 
             .Header{
