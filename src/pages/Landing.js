@@ -468,22 +468,18 @@ const Landing  = ()=>{
                                         <div className="SocialMedia">
                                         <p>Center for disease reporting</p>
                                         <div className="Icons">
-                                            <a href="">
+                                            {/* <a href="">
                                             <FontAwesomeIcon icon = {['fab','facebook-square']}/>
-                                            </a>
-                                            <a href="">
+                                            </a> */}
+                                            <a href="https://www.twitter.com/kontagionafrica">
                                             <FontAwesomeIcon icon = {['fab','twitter']}/>
                                             </a>
-                                            <a href="">
+                                            {/* <a href="">
                                             <FontAwesomeIcon icon = {['fab','instagram']} />
-                                            </a>
-                                            <a href = "">
+                                            </a> */}
+                                            <a href = "https://www.linkedin.com/in/kontagion-africa-84252b1a9">
                                             <FontAwesomeIcon icon = {['fab','linkedin']} />
                                             </a>
-                                            <a href="">
-                                            <FontAwesomeIcon icon = {['fab','youtube']} />
-                                            </a>
-                                            
                                         </div>
                                     </div>
                                 </div>
