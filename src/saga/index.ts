@@ -90,7 +90,8 @@ function* getHeatMapData(){
     url: 'https://nigeria-covid-19.p.rapidapi.com/api/states',
     headers:{
         "x-rapidapi-host": "nigeria-covid-19.p.rapidapi.com",
-      "x-rapidapi-key": "64c8bf67aamsh270dfcd54556557p19c7ddjsnf55abf93fcd1"
+      "x-rapidapi-key": "64c8bf67aamsh270dfcd54556557p19c7ddjsnf55abf93fcd1",
+      "Access-Control-Allow-Origin":"https://www.kontagion.africa"
     },
     })
 
