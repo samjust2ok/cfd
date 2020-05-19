@@ -466,7 +466,7 @@ const Landing  = ()=>{
                                 <div className="Contact">
                                     <p>Contact</p>
                                         <div className="SocialMedia">
-                                        <p>Center for disease reporting</p>
+                                        <p>info@kontagion.africa</p>
                                         <div className="Icons">
                                             {/* <a href="">
                                             <FontAwesomeIcon icon = {['fab','facebook-square']}/>
